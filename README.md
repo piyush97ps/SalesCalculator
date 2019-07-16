@@ -1,4 +1,4 @@
-# SalesCalculator
+SalesCalculator
 Sales Tax Calculator
 
 Example:
@@ -25,7 +25,7 @@ Enter items or product to calculate Sale Tax:
 Example 1 book at 12.49
         1 music CD at 14.99
         1 chocolate bar at 0.85
-1 bottle of perfume at 18.99
+	1 bottle of perfume at 18.99
 
 
 TO continue inserting enter Y else anything: 
@@ -34,7 +34,7 @@ Enter items or product to calculate Sale Tax:
 Example 1 book at 12.49
         1 music CD at 14.99
         1 chocolate bar at 0.85
-1 imported bottle of perfume at 27.99
+	1 imported bottle of perfume at 27.99
 
 
 TO continue inserting enter Y else anything: 
@@ -43,7 +43,7 @@ Enter items or product to calculate Sale Tax:
 Example 1 book at 12.49
         1 music CD at 14.99
         1 chocolate bar at 0.85
-1 packet of headache pills at 9.75
+	1 packet of headache pills at 9.75
 
 
 TO continue inserting enter Y else anything: 
