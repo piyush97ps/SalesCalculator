@@ -4,16 +4,23 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
+    static String[] BOOKS = {"book ","books "};
+    static String[] FOOD = {"chocolates", "chocolate"};
+    static String[] MEDICAL = {"pills", "pill"};
+    static String IMPORTED = "imported";
+    static Scanner in = new Scanner(System.in);
 
     public static void main(String arg[]) {
-        String[] BOOKS = {"book ","books "};
-        String[] FOOD = {"chocolates", "chocolate"};
-        String[] MEDICAL = {"pills", "pill"};
-        String IMPORTED = "imported";
-        Scanner in = new Scanner(System.in);
+        ArrayList<String> inputList = getInputData();
+        ArrayList<String> outputList = getOutputData(inputList);
+        for(String output: outputList){
+            System.out.println(output);
+        }
 
+    }
+
+    static ArrayList<String> getInputData(){
         ArrayList<String> inputList = new ArrayList<>();
-        ArrayList<String> outputList = new ArrayList<>();
         while (true) {
             System.out.println("Enter items or product to calculate Sale Tax: \n" +
                     "Example 1 book at 12.49\n" +
@@ -39,6 +46,11 @@ public class Main {
             }
             break;
         }
+        return inputList;
+    }
+
+    static ArrayList<String> getOutputData(ArrayList<String> inputList){
+        ArrayList<String> outputList = new ArrayList<>();
         double totalTax = 0;
         double totalCost = 0;
         for(String line: inputList){
@@ -60,10 +72,7 @@ public class Main {
         }
         outputList.add("Sales Taxes: "+String.format("%.2f", totalTax));
         outputList.add("Total: "+String.format("%.2f", totalCost));
-        for(String output: outputList){
-            System.out.println(output);
-        }
-
+        return outputList;
     }
 
     static  boolean containAny(String line, String[] list){
@@ -75,6 +84,9 @@ public class Main {
         return false;
     }
     static boolean checkInput(String input){
+        if(!input.contains(" at ")){
+            return false;
+        }
         String s [] = input.split(" ");
         int len = s.length;
         try{
