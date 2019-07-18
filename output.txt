@@ -1,5 +1,4 @@
-1 book: 12.49
-1 music CD: 16.49
-1 chocolate bar: 0.85
-Sales Taxes: 1.50
-Total: 29.83
+1 imported box of chocolates: 10.50
+1 imported box of chocolates: 54.63
+Sales Taxes: 7.63
+Total: 65.13
