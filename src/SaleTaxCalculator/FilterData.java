@@ -17,6 +17,7 @@ class FilterData{
     private String outputFilename = "output.txt";
 
     private String IMPORTED = "imported";
+    private double importTax = 5;
 
     private ArrayList<ItemCategory> typeList = new ArrayList<>();
     private ArrayList<Item> itemList = new ArrayList<>();
@@ -51,6 +52,14 @@ class FilterData{
         typeList.add(OTHER);
     }
 
+    public double getImportTax() {
+        return importTax;
+    }
+
+    public void setImportTax(double importTax) {
+        this.importTax = importTax;
+    }
+
     public static FilterData getInstance(){
         return instance;
     }
@@ -61,12 +70,11 @@ class FilterData{
         }
         int index = 0;
         for(Item item: itemList){
-            System.out.println(item.getName());
-            double importTax = 0;
+            double extraTax = 0;
             if(item.isImported()){
-                importTax += 5;
+                extraTax += this.importTax;
             }
-            double tax_price = (item.getPrice()*(item.getType().getTax()+importTax))/100;
+            double tax_price = (item.getPrice()*(item.getType().getTax()+extraTax))/100;
             double cost  = item.getPrice() + tax_price;
             String outLine = inputList.get(index).split(" at ")[0] + ": " +String.format("%.2f", cost);
             totalCost += cost;
@@ -148,6 +156,29 @@ class FilterData{
             return false;
         }
         return true;
+    }
+
+    public ArrayList<String> setTax(String catagoryName, double tax){
+        Iterator<ItemCategory> item = typeList.iterator();
+        while (item.hasNext()) {
+            ItemCategory currItem = item.next();
+            if(currItem== ItemCategory.valueOf(catagoryName.toUpperCase())){
+                currItem.setTax(tax);
+                return currItem.getWords();
+            }
+        }
+        return null;
+    }
+
+    public double getTax(String catagoryName, double tax){
+        Iterator<ItemCategory> item = typeList.iterator();
+        while (item.hasNext()) {
+            ItemCategory currItem = item.next();
+            if(currItem== ItemCategory.valueOf(catagoryName.toUpperCase())){
+                return currItem.getTax();
+            }
+        }
+        return -1;
     }
 
 
